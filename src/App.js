@@ -1,27 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import GoalList from "./components/GoalList/GoalList";
+import NewGoal from "./components/NewGoal/NewGoal"
+
+import './App.css'
+
+const App = () => {
+
+  const courseGoals = [
+    {id:'1', text: 'Finish the Goals' },
+    {id:'2', text: 'Learn all about the Course Main Topic' },
+    {id:'3', text: 'Help other students in the Course Q & A' },
+    {id:'4', text: 'My name is Shreyas' }
+  ];
+
+  const addNewGoalHandler = (newGoal) => {
+    courseGoals.push(newGoal);
+    console.log(courseGoals);
+  }
+
+  return(
+    <div className="course-goals">
+      <h2>Course Goals</h2>
+      <NewGoal onAddGoal = {addNewGoalHandler} />           
+      <GoalList goals = {courseGoals} />
     </div>
   );
-}
+};
+  
 
 export default App;
-
-
